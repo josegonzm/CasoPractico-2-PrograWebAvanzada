@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BW", "BW\BW.csproj", "{0840
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{AC878489-68EA-4F2D-95E6-1FC1CE51662F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{B7B8C2F0-56D6-48F3-A2A1-DD28152B1179}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{AC878489-68EA-4F2D-95E6-1FC1CE51662F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC878489-68EA-4F2D-95E6-1FC1CE51662F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC878489-68EA-4F2D-95E6-1FC1CE51662F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7B8C2F0-56D6-48F3-A2A1-DD28152B1179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7B8C2F0-56D6-48F3-A2A1-DD28152B1179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7B8C2F0-56D6-48F3-A2A1-DD28152B1179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7B8C2F0-56D6-48F3-A2A1-DD28152B1179}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
