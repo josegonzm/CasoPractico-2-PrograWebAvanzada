@@ -12,7 +12,7 @@ namespace Abstracciones.Modelos
     public class Medicamento
     {
         [Required]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; }
         [Required]
         [StringLength(35, ErrorMessage = "La longitud del nombre tiene que ser mayor a 4 y menor a 35 caracteres", MinimumLength = 4)]
         public string Nombre { get; set; }

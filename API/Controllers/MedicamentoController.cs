@@ -68,6 +68,7 @@ namespace API.Controllers
             {
                 _logger.LogInformation("Agregando medicamento");
                 var id = await _medicamentoBW.AgregarMedicamento(medicamento);
+                medicamento.Id = id;
                 return CreatedAtAction(nameof(GetByIdAsync), new { id = id }, medicamento);
             }
             catch (Exception ex)
