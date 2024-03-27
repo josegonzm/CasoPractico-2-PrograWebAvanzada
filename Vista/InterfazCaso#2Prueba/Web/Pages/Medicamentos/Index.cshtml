@@ -5,56 +5,89 @@
     ViewData["Title"] = "Index";
 }
 
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-top: 50px;
+        color: #333;
+    }
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    h1{
+        color: #007bff;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .action-links a {
+        margin-right: 5px;
+        margin-bottom: 5px; 
+    }
+</style>
+
 <h1>Medicamentos</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create" class="btn btn-primary">Create New</a>
 </p>
-<table class="table">
+
+<table>
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Medicamento[0].Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Medicamento[0].Indicaciones)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Medicamento[0].Fecha_Caducidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Medicamento[0].Efectos_Secundarios)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Medicamento[0].Fabricante)
-            </th>
-            <th></th>
+            <th>Nombre</th>
+            <th>Indicaciones</th>
+            <th>Fecha de Caducidad</th>
+            <th>Efectos Secundarios</th>
+            <th>Fabricante</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Medicamento) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Indicaciones)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha_Caducidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Efectos_Secundarios)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fabricante)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Medicamento)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.Indicaciones)</td>
+                <td>@Html.DisplayFor(modelItem => item.Fecha_Caducidad)</td>
+                <td>@Html.DisplayFor(modelItem => item.Efectos_Secundarios)</td>
+                <td>@Html.DisplayFor(modelItem => item.Fabricante)</td>
+                <td class="action-links">
+                    <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
+                    <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
