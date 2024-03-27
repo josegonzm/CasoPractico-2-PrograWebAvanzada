@@ -49,11 +49,12 @@ namespace Web.Pages.Medicamentos
                 return Page();
             }
 
-            if (await MedicamentoExistsAsync(Medicamento.Id))
+            var id = Guid.Parse(HttpContext.Request.Query["id"]);
+            if (await MedicamentoExistsAsync(id))
             {
                 string endpoint = "https://localhost:7179/API/Medicamento/{0}";
                 var cliente = new HttpClient();
-                var respuesta = await cliente.PutAsJsonAsync<Medicamento>(string.Format(endpoint, Medicamento.Id), Medicamento);
+                var respuesta = await cliente.PutAsJsonAsync<Medicamento>(string.Format(endpoint, id), Medicamento);
                 respuesta.EnsureSuccessStatusCode();
             }
             return RedirectToPage("./Index");

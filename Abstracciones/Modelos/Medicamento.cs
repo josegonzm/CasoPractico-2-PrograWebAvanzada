@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Abstracciones.Helpers;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,6 +21,7 @@ namespace Abstracciones.Modelos
         [StringLength(70, ErrorMessage = "La longitud de las indicaciones tiene que ser mayor a 20 y menor a 70 caracteres", MinimumLength = 20)]
         public string Indicaciones { get; set; }
         [Required]
+        [ValidarFecha(ErrorMessage = "La fecha de caducidad no puede ser anterior a la fecha actual")]
         public DateTime Fecha_Caducidad { get; set; }
         [Required]
         [StringLength(70, ErrorMessage = "La longitud de los efectos secundarios tiene que ser mayor a 10 y menor a 70 caracteres", MinimumLength = 10)]
