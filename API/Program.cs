@@ -23,6 +23,9 @@ builder.Services.AddScoped<IRepositorioDapper, RepositorioDapper>();
 builder.Services.AddScoped<IMedicamentoDA, MedicamentoDA>();
 builder.Services.AddScoped<IMedicamentoBW, MedicamentoBW>();
 
+builder.Services.AddScoped<IRecetaDA, RecetaDA>();
+builder.Services.AddScoped<IRecetaBW, RecetaBW>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
