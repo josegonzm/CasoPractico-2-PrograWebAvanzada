@@ -25,7 +25,7 @@ namespace Web.Pages.Recetas
                 return NotFound();
             }
 
-            string endpoint = "https://localhost:7179/API/Receta/{0}";
+            string endpoint = "https://localhost:7179/API/Receta/Campos/{0}";
             var cliente = new HttpClient();
             var solicitud = new HttpRequestMessage(HttpMethod.Get, string.Format(endpoint, id));
             var respuesta = await cliente.SendAsync(solicitud);
@@ -50,9 +50,9 @@ namespace Web.Pages.Recetas
             }
 
             var id = Guid.Parse(HttpContext.Request.Query["id"]);
-            if (await RecetaExistsAsync(id))
+            
             {
-                string endpoint = "https://localhost:7179/API/Receta/{0}";
+                string endpoint = "https://localhost:7179/API/Receta/Estado";
                 var cliente = new HttpClient();
                 var respuesta = await cliente.PutAsJsonAsync<Receta>(string.Format(endpoint, id), Receta);
                 respuesta.EnsureSuccessStatusCode();
@@ -62,7 +62,7 @@ namespace Web.Pages.Recetas
 
         private async Task<bool> RecetaExistsAsync(Guid id)
         {
-            string endpoint = "https://localhost:7179/API/Receta/{0}";
+            string endpoint = "https://localhost:7179/API/Receta/Estado";
             var cliente = new HttpClient();
             var solicitud = new HttpRequestMessage(HttpMethod.Get, string.Format(endpoint, id));
             var respuesta = await cliente.SendAsync(solicitud);
