@@ -1,0 +1,69 @@
+﻿@page
+@model Web.Pages.Recetas.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Receta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Receta.Paciente" class="control-label"></label>
+                <input asp-for="Receta.Paciente" class="form-control" />
+                <span asp-validation-for="Receta.Paciente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Receta.Medico" class="control-label"></label>
+                <input asp-for="Receta.Medico" class="form-control" />
+                <span asp-validation-for="Receta.Medico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Receta.FechaEmision" class="control-label"></label>
+                <input asp-for="Receta.FechaEmision" class="form-control" />
+                <span asp-validation-for="Receta.FechaEmision" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Receta.Medicamento" class="control-label"></label>
+                <input asp-for="Receta.Medicamento" class="form-control" />
+                <span asp-validation-for="Receta.Medicamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Receta.Instrucciones" class="control-label"></label>
+                <input asp-for="Receta.Instrucciones" class="form-control" />
+                <span asp-validation-for="Receta.Instrucciones" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Receta.Expira" class="control-label"></label>
+                <input asp-for="Receta.Expira" class="form-control" />
+                <span asp-validation-for="Receta.Expira" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Receta.Comentarios" class="control-label"></label>
+                <input asp-for="Receta.Comentarios" class="form-control" />
+                <span asp-validation-for="Receta.Comentarios" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Receta.Estado" class="control-label"></label>
+                <input asp-for="Receta.Estado" class="form-control" />
+                <span asp-validation-for="Receta.Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

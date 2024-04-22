@@ -1,0 +1,67 @@
+﻿@page
+@model Web.Pages.Recetas.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Receta</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receta.Paciente)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receta.Paciente)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receta.Medico)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receta.Medico)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receta.FechaEmision)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receta.FechaEmision)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receta.Medicamento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receta.Medicamento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receta.Instrucciones)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receta.Instrucciones)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receta.Expira)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receta.Expira)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receta.Comentarios)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receta.Comentarios)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receta.Estado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receta.Estado)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Receta?.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

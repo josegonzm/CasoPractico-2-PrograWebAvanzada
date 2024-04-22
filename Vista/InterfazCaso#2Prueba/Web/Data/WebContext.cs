@@ -15,5 +15,7 @@ namespace Web.Data
         }
 
         public DbSet<Abstracciones.Modelos.Medicamento> Medicamento { get; set; } = default!;
+
+        public DbSet<Abstracciones.Modelos.Receta> Receta { get; set; } = default!;
     }
 }
