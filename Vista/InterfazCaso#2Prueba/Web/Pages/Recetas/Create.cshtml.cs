@@ -12,13 +12,7 @@ namespace Web.Pages.Recetas
 {
     public class CreateModel : PageModel
     {
-        private readonly Web.Data.WebContext _context;
-
-        public CreateModel(Web.Data.WebContext context)
-        {
-            _context = context;
-        }
-
+       
         public IActionResult OnGet()
         {
             return Page();
@@ -26,18 +20,20 @@ namespace Web.Pages.Recetas
 
         [BindProperty]
         public Receta Receta { get; set; } = default!;
-        
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Receta == null || Receta == null)
+            if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Receta.Add(Receta);
-            await _context.SaveChangesAsync();
+            string endpoint = "https://localhost:7179/API/Receta";
+            var cliente = new HttpClient();
+            var respuesta = await cliente.PostAsJsonAsync<Receta>(endpoint, Receta);
+            respuesta.EnsureSuccessStatusCode();
 
             return RedirectToPage("./Index");
         }

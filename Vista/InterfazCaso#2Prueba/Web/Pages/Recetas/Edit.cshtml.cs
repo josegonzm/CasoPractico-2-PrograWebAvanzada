@@ -8,29 +8,30 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Abstracciones.Modelos;
 using Web.Data;
+using Newtonsoft.Json;
 
 namespace Web.Pages.Recetas
 {
     public class EditModel : PageModel
     {
-        private readonly Web.Data.WebContext _context;
-
-        public EditModel(Web.Data.WebContext context)
-        {
-            _context = context;
-        }
-
+        
         [BindProperty]
         public Receta Receta { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(Guid? id)
         {
-            if (id == null || _context.Receta == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var receta =  await _context.Receta.FirstOrDefaultAsync(m => m.Id == id);
+            string endpoint = "https://localhost:7179/API/Receta/{0}";
+            var cliente = new HttpClient();
+            var solicitud = new HttpRequestMessage(HttpMethod.Get, string.Format(endpoint, id));
+            var respuesta = await cliente.SendAsync(solicitud);
+            respuesta.EnsureSuccessStatusCode();
+            var resultado = await respuesta.Content.ReadAsStringAsync();
+            var receta = JsonConvert.DeserializeObject<Receta>(resultado);
             if (receta == null)
             {
                 return NotFound();
@@ -48,30 +49,29 @@ namespace Web.Pages.Recetas
                 return Page();
             }
 
-            _context.Attach(Receta).State = EntityState.Modified;
-
-            try
+            var id = Guid.Parse(HttpContext.Request.Query["id"]);
+            if (await RecetaExistsAsync(id))
             {
-                await _context.SaveChangesAsync();
+                string endpoint = "https://localhost:7179/API/Receta/{0}";
+                var cliente = new HttpClient();
+                var respuesta = await cliente.PutAsJsonAsync<Receta>(string.Format(endpoint, id), Receta);
+                respuesta.EnsureSuccessStatusCode();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RecetaExists(Receta.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
             return RedirectToPage("./Index");
         }
 
-        private bool RecetaExists(Guid id)
+        private async Task<bool> RecetaExistsAsync(Guid id)
         {
-          return (_context.Receta?.Any(e => e.Id == id)).GetValueOrDefault();
+            string endpoint = "https://localhost:7179/API/Receta/{0}";
+            var cliente = new HttpClient();
+            var solicitud = new HttpRequestMessage(HttpMethod.Get, string.Format(endpoint, id));
+            var respuesta = await cliente.SendAsync(solicitud);
+            respuesta.EnsureSuccessStatusCode();
+            var resultado = await respuesta.Content.ReadAsStringAsync();
+            var Receta = JsonConvert.DeserializeObject<Receta>(resultado);
+            if (Receta != null)
+                return true;
+            return false;
         }
     }
 }
