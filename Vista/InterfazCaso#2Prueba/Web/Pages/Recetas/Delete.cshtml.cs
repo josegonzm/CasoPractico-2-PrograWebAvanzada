@@ -62,7 +62,7 @@ namespace Web.Pages.Recetas
 
         private async Task<bool> RecetaExistsAsync(Guid id)
         {
-            string endpoint = "https://localhost:7229/API/Receta/{0}";
+            string endpoint = "https://localhost:7179/API/Receta/{0}";
             var cliente = new HttpClient();
             var solicitud = new HttpRequestMessage(HttpMethod.Get, string.Format(endpoint, id));
             var respuesta = await cliente.SendAsync(solicitud);

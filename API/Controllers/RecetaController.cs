@@ -19,7 +19,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAsync([FromQuery] Guid id)
+        public async Task<IActionResult> DeleteAsync(Guid id)
         {
             try
             {
@@ -57,6 +57,20 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("Campos/{id}")]
+        public async Task<IActionResult> GetByIdCamposAsync(Guid id)
+        {
+            try
+            {
+                _logger.LogInformation("Obteniendo receta por id");
+                return Ok(await _recetaBW.ObtenerCamposRecetaPorId(id));
+            }
+            catch (Exception ex)
+            {
+                return GenerarError(ex, "Error consultando receta por id");
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] Receta receta)
         {
@@ -72,8 +86,8 @@ namespace API.Controllers
             }
         }
 
-        [HttpPut]
-        public async Task<IActionResult> PutAsync([FromQuery] Guid id, [FromBody] Receta receta)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAsync(Guid id, [FromBody] Receta receta)
         {
             try
             {

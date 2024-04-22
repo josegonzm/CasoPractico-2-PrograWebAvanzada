@@ -47,5 +47,10 @@ namespace BW
         {
             return await _recetaDA.ObtenerRecetaPorId(id);
         }
+
+        public async Task<Receta> ObtenerCamposRecetaPorId(Guid id)
+        {
+            return await _recetaDA.ObtenerCamposRecetaPorId(id);
+        }
     }
 }

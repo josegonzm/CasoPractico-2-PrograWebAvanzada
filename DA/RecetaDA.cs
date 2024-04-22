@@ -100,6 +100,13 @@ namespace DA
             return ConvertirRecetaDBAModelo(Consulta.First());
         }
 
+        public async Task<Receta> ObtenerCamposRecetaPorId(Guid id)
+        {
+            string sql = @"[ObtenerCamposRecetaPorId]";
+            var Consulta = await _sqlConnection.QueryAsync<Abstracciones.Entities.Receta>(sql, new { Id = id });
+            return ConvertirRecetaDBAModelo(Consulta.First());
+        }
+
 
         private IEnumerable<Abstracciones.Modelos.Receta> ConvertirListaRecetaDBAModelo(IEnumerable<Abstracciones.Entities.Receta> Recetas)
         {

@@ -12,6 +12,8 @@ namespace Abstracciones.DA
 
         Task<Modelos.Receta> ObtenerRecetaPorId(Guid id);
 
+        Task<Modelos.Receta> ObtenerCamposRecetaPorId(Guid id);
+
         Task<Guid> EliminarReceta(Guid id);
 
         Task<Guid> ModificarReceta(Guid id, Modelos.Receta receta);
