@@ -85,6 +85,19 @@ namespace API.Controllers
                 return GenerarError(ex, "Error al actualizar receta");
             }
         }
+        [HttpPut("Estado")]
+        public async Task<IActionResult> PutEstadoAsync([FromQuery] Guid id, [FromBody] Receta receta)
+        {
+            try
+            {
+                _logger.LogInformation("Actualizando receta");
+                return Ok(await _recetaBW.ModificarEstado(id, receta)); 
+            }
+            catch (Exception ex)
+            {
+                return GenerarError(ex, "Error al actualizar receta");
+            }
+        }
 
         private IActionResult GenerarError(Exception ex, string mensaje)
         {

@@ -28,5 +28,8 @@ namespace Abstracciones.API
 
         [HttpPut]
         Task<IActionResult> PutAsync([FromQuery] Guid id, [FromBody] Receta receta);
+
+        [HttpPut]
+        Task<IActionResult> PutEstadoAsync([FromQuery] Guid id, [FromBody] Receta receta);
     }
 }

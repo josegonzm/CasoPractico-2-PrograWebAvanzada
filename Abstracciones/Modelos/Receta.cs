@@ -13,9 +13,9 @@ namespace Abstracciones.Modelos
         [Required]
         public Guid Id { get; set; }
         [Required]
-        public string Paciente { get; set; }
+        public Guid Paciente { get; set; }
         [Required]
-        public string Medico { get; set; }
+        public Guid Medico { get; set; }
         [Required]
         [ValidarFecha]
         public DateTime FechaEmision { get; set; }
@@ -28,5 +28,8 @@ namespace Abstracciones.Modelos
         public DateTime Expira { get; set; }
         [Required]
         public string Comentarios { get; set; }
+
+        [Required]
+        public string Estado { get; set; }
     }
 }

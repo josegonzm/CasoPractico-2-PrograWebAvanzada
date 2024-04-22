@@ -17,5 +17,8 @@ namespace Abstracciones.DA
         Task<Guid> ModificarReceta(Guid id, Modelos.Receta receta);
 
         Task<Guid> AgregarReceta(Modelos.Receta receta);
+
+        Task<Guid> ModificarEstado(Guid id, Modelos.Receta receta);
+
     }
 }

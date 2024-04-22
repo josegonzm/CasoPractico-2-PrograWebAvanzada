@@ -28,6 +28,11 @@ namespace BW
             return await _recetaDA.EliminarReceta(id);
         }
 
+        public async Task<Guid> ModificarEstado(Guid id, Receta receta)
+        {
+            return await _recetaDA.ModificarEstado(id,receta);
+        }
+
         public async Task<Guid> ModificarReceta(Guid id, Receta receta)
         {
             return await _recetaDA.ModificarReceta(id, receta);

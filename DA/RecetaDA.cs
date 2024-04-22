@@ -33,7 +33,8 @@ namespace DA
                 Medicamento = receta.Medicamento,
                 Instrucciones = receta.Instrucciones,
                 Expira = receta.Expira,
-                Comentarios = receta.Comentarios
+                Comentarios = receta.Comentarios,
+                Estado = receta.Estado
             });
             return (Guid)Consulta;
         }
@@ -43,6 +44,28 @@ namespace DA
             string sql = @"[EliminarReceta]";
             var Consulta = await _sqlConnection.ExecuteScalarAsync(sql, new {Id = id});
             return id;
+        }
+
+        public async Task<Guid> ModificarEstado(Guid id, Receta receta)
+        {
+            string sql = @"[spTransicionEstado]";
+            var Consulta = await _sqlConnection.ExecuteAsync(sql, new
+            {
+                RecetaId = receta.Id,
+                PacienteEsperado = receta.Paciente,
+                MedicoEsperado = receta.Medico,
+                FechaEmisionEsperada = receta.FechaEmision,
+                MedicamentoEsperado = receta.Medicamento,
+                InstruccionesEsperadas = receta.Instrucciones,
+                ExpiraEsperada = receta.Expira,
+                ComentariosEsperados = receta.Comentarios,
+                NuevoEstado = receta.Estado
+            });
+            return id;
+
+
+
+
         }
 
         public async Task<Guid> ModificarReceta(Guid id, Receta receta)
@@ -57,7 +80,8 @@ namespace DA
                 Medicamento = receta.Medicamento,
                 Instrucciones = receta.Instrucciones,
                 Expira = receta.Expira,
-                Comentarios = receta.Comentarios
+                Comentarios = receta.Comentarios,
+                Estado = receta.Estado
             });
             return id;
         }
