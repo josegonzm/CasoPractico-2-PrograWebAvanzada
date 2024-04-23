@@ -4,13 +4,68 @@
 @{
     ViewData["Title"] = "Details";
 }
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-top: 50px;
+        color: #333;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+        color: #666;
+    }
+
+    hr {
+        border-top: 2px solid #007bff;
+        margin-bottom: 20px;
+    }
+
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .col-sm-2, .col-sm-10 {
+        padding: 10px;
+    }
+
+    .details-list dt {
+        font-weight: bold;
+    }
+
+    .details-list dd {
+        margin-left: 0;
+    }
+
+    .action-links {
+        margin-top: 20px;
+    }
+
+        .action-links a {
+            margin-right: 10px;
+            color: #007bff;
+        }
+
+            .action-links a:hover {
+                text-decoration: underline;
+            }
+</style>
 
 <h1>Details</h1>
 
 <div>
     <h4>Receta</h4>
     <hr />
-    <dl class="row">
+    <dl class="row details-list">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Receta.Paciente)
         </dt>
